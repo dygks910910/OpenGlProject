@@ -1,4 +1,2 @@
 ﻿  소스.cpp
-c:\users\park yo han\documents\visual studio 2015\projects\openglproject\openglproject\소스.cpp(207): error C2084: 'GLvoid SpecialKeyboard(unsigned char,int,int)' 함수에 이미 본문이 있습니다.
-  c:\users\park yo han\documents\visual studio 2015\projects\openglproject\openglproject\소스.cpp(159): note: 'SpecialKeyboard'의 이전 정의를 참조하십시오.
-c:\users\park yo han\documents\visual studio 2015\projects\openglproject\openglproject\소스.cpp(216): warning C4477: 'printf' : 서식 문자열 '%s'에 'char *' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'int'입니다.
+  OpenGlProject.vcxproj -> C:\Users\Park Yo Han\Documents\Visual Studio 2015\Projects\OpenGlProject\Debug\OpenGlProject.exe

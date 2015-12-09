@@ -8,6 +8,7 @@ using namespace std;
 #define TILESIZE1 75
 #define TILESIZE2 20
 #define TILESIZE3 35
+
 class Tile {
 public:
 	float x;
@@ -30,10 +31,10 @@ GLvoid CollideChect();
 GLvoid drawScene(GLvoid);
 GLvoid Reshape(int w, int h);
 GLvoid Mouse(int button, int state, int x, int y);
-GLvoid SpecialKeyboard(unsigned char key, int x, int y);
+GLvoid SpecialKeyboard(int key, int x, int y);
 GLvoid TimerFunction(int value);
 GLfloat color = 0.0;
-GLvoid SpecialKeyboard(unsigned char key, int x, int y);
+GLvoid Keyboard(unsigned char key, int x, int y);
 
 GLvoid InitTile(Tile** tile)
 {
@@ -74,7 +75,8 @@ void main(int argc, char *argv[]) {   //초기화 함수들
 	glutCreateWindow("Example2");    // 윈도우 생성 (윈도우 이름)  
 	InitTile(tile);
 	glutMouseFunc(Mouse);
-	glutKeyboardFunc(SpecialKeyboard);
+	glutSpecialFunc(SpecialKeyboard);
+	glutKeyboardFunc(Keyboard);
 	glutTimerFunc(100, TimerFunction, 1);
 	glutDisplayFunc(drawScene);    // 출력 함수의 지정   
 	glutReshapeFunc(Reshape);
@@ -156,17 +158,26 @@ GLvoid Reshape(int w, int h)
 	glLoadIdentity();
 
 }
-void SpecialKeyboard(unsigned char key, int x, int y)
+void SpecialKeyboard(int key, int x, int y)
 {
-	if (key == 'e')
+	if (key == GLUT_KEY_LEFT)
 		b -= 5;
-	if (key == 'r')
+	if (key == GLUT_KEY_RIGHT)
 		b += 5;
 	if (key == 'b')
 	{
 		jump = true;
 	}
-
+	if (key == GLUT_KEY_UP)
+	{
+		a += 5;
+	}
+	else if(key == GLUT_KEY_DOWN)
+	{
+		a -= 5;
+	}
+	printf("%d", key);
+	glutPostRedisplay();
 }
 
 void Mouse(int button, int state, int x, int y)
@@ -181,7 +192,7 @@ void Mouse(int button, int state, int x, int y)
 void TimerFunction(int value)
 {
 	//All += 10;
-	a += 3;
+	//a += 3;
 
 
 	glutPostRedisplay();   // 화면 재 출력 
@@ -203,15 +214,11 @@ GLvoid CollideChect()
 
 }
 
-GLvoid SpecialKeyboard(unsigned char key, int x, int y)
+
+GLvoid Keyboard(unsigned char key, int x, int y)
 {
-	if (key == GLUT_KEY_LEFT)
+	if (key == 'a' )
 	{
-		b -= 5;
+		printf("%c", key);
 	}
-	if(key == GLUT_KEY_RIGHT)
-	{
-		b += 5;
-	}
-	printf("%s", key);
 }
