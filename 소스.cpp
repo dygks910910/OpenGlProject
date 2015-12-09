@@ -185,7 +185,7 @@ void Mouse(int button, int state, int x, int y)
 
 	if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN)
 	{
-
+		printf("x = %d,y = %d", x, y);
 	}
 }
 
